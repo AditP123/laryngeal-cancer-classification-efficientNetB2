@@ -81,8 +81,8 @@ if __name__ == "__main__":
     # Define bounds for hyperparameters
     bounds = [(1e-5, 1e-3), (0.1, 0.5)]  # (lr range, dropout range)
 
-    # Run the dummy optimizer (replace with DBRO/AWO/POA etc.)
-    best_params, best_score = run_aquila(bounds, pop_size=15, max_iter=30)
+    # Run the AO optimizer to find best hyperparameters
+    best_params, best_score = run_aquila(bounds, pop_size=8, max_iter=10)
 
     print("\n--- Optimization Finished ---")
     print(f"Best Params: lr={best_params[0]:.6f}, dropout={best_params[1]:.2f}")
