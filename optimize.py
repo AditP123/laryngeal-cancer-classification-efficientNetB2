@@ -30,6 +30,7 @@ def train_with_hyperparams(lr, dropout, epochs=5):
     Build and train EfficientNetB2 with given hyperparameters.
     Returns validation accuracy after training.
     """
+    tf.keras.backend.clear_session()  # Clear previous models from memory
     model = build_model(num_classes)
 
     # Modify dropout layer dynamically (optional: adjust dropout in build_model instead)
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     bounds = [(1e-5, 1e-3), (0.1, 0.5)]  # (lr range, dropout range)
 
     # Run the AO optimizer to find best hyperparameters
-    best_params, best_score = run_aquila(bounds, pop_size=8, max_iter=10)
+    best_params, best_score = run_aquila(bounds, pop_size=8, max_iter=3)
 
     print("\n--- Optimization Finished ---")
     print(f"Best Params: lr={best_params[0]:.6f}, dropout={best_params[1]:.2f}")

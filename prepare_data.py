@@ -56,9 +56,13 @@ def load_data_for_fold(fold_path):
         if augment:
             ds = ds.map(lambda x, y: (data_augmentation(x, training=True), y), 
                         num_parallel_calls=tf.data.AUTOTUNE)
+        else:
+            ds = ds.map(lambda x, y: (x, y), 
+                        num_parallel_calls=tf.data.AUTOTUNE)
         
-        # Use buffered prefetching to load data in the background
-        return ds.prefetch(buffer_size=tf.data.AUTOTUNE)
+        ds = ds.shuffle(buffer_size=100)   # smaller buffer
+        ds = ds.prefetch(buffer_size=1)    # fixed prefetch
+        return ds
 
     train_ds = prepare(train_ds, augment=True)
     val_ds = prepare(val_ds, augment=False)
