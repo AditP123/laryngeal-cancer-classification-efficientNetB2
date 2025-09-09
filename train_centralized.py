@@ -1,7 +1,16 @@
-import tensorflow as tf
 import os
+import random
 import time
 import numpy as np
+
+# Set seeds for reproducibility
+SEED = 42
+os.environ['PYTHONHASHSEED'] = str(SEED)
+random.seed(SEED)
+np.random.seed(SEED)
+
+import tensorflow as tf
+tf.random.set_seed(SEED)
 from prepare_data import load_data_for_fold, DATASET_PATH # Import from our previous script
 
 def build_model(num_classes):
@@ -30,6 +39,9 @@ if __name__ == "__main__":
     # --- Configuration ---
     NUM_EPOCHS = 15
     LEARNING_RATE = 0.001
+    
+    # lr=0.001, dropout=0.2 (default)
+    # lr=0.000443, dropout=0.27 (semi optimized)
 
     # --- 1. Load and Combine Data from All Folds ---
     print("Loading data from all folds...")
