@@ -1,11 +1,3 @@
-"""
-Template for applying Nature-Inspired Optimization Algorithms (NIOs)
-to tune hyperparameters for EfficientNetB2 training.
-
-Supported optimizers: DBRO, AWO, POA, CBO, AO, BWO
-(implementations need to be imported or added manually).
-"""
-
 import numpy as np
 import time
 from train_centralized import build_model   # reuse your model builder
