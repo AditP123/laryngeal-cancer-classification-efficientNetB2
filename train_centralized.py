@@ -20,7 +20,7 @@ def build_model(num_classes):
     # We apply the data augmentation we defined earlier
     x = base_model(inputs, training=False) # Set training=False for the frozen base
     x = tf.keras.layers.GlobalAveragePooling2D()(x)
-    x = tf.keras.layers.Dropout(0.3)(x) # Regularization
+    x = tf.keras.layers.Dropout(0.5)(x) # Regularization
     outputs = tf.keras.layers.Dense(num_classes, activation='softmax')(x)
     
     model = tf.keras.Model(inputs, outputs)
