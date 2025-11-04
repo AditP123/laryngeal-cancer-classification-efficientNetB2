@@ -20,7 +20,7 @@ def build_model(num_classes):
     # We apply the data augmentation we defined earlier
     x = base_model(inputs, training=False) # Set training=False for the frozen base
     x = tf.keras.layers.GlobalAveragePooling2D()(x)
-    x = tf.keras.layers.Dropout(0.5)(x) # Regularization
+    x = tf.keras.layers.Dropout(0.41)(x) # Regularization
     outputs = tf.keras.layers.Dense(num_classes, activation='softmax')(x)
     
     model = tf.keras.Model(inputs, outputs)
@@ -29,10 +29,10 @@ def build_model(num_classes):
 if __name__ == "__main__":
     # --- Configuration ---
     NUM_EPOCHS = 15
-    LEARNING_RATE = 0.001
+    LEARNING_RATE = 0.000787
     
-    # lr=0.001, dropout=0.3 (default)
-    # lr=0.001, dropout=0.5 (optimized)
+    # lr=0.001, dropout=0.2 (default)
+    # lr=0.000787, dropout=0.41 (optimized)
 
     # --- 1. Load and Combine Data from All Folds ---
     print("Loading data from all folds...")

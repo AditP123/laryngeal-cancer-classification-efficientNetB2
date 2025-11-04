@@ -52,7 +52,7 @@ def fit_metrics_aggregation(metrics: List[Tuple[int, Metrics]]) -> Dict[str, Uni
     # Sum training time and bytes sent for this round
     print(metrics)
     round_training_time = max(m["training_time"] for _, m in metrics)
-    round_bytes_sent = sum(m["bytes_sent"] for _, m in metrics)
+    round_bytes_sent = max(m["bytes_sent"] for _, m in metrics)
     
     # Accumulate totals across all rounds
     total_training_time_accumulated += round_training_time
