@@ -61,7 +61,7 @@ The project should be organized as follows. The `laryngeal_dataset` is not inclu
 This script runs the aquila optimizer imported from the mealpy library to determine the optimal values for learning rate and dropout rate.
 
 ```bash
-python optimizepy
+python optimize.py
 ```
 
 ### Step 2: Run the Centralized Benchmark
