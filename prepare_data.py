@@ -67,6 +67,10 @@ def load_data_for_fold(fold_path):
     train_ds = prepare(train_ds, augment=True)
     val_ds = prepare(val_ds, augment=False)
     
+    # Preserve class names on the returned datasets so callers can inspect mapping
+    train_ds.class_names = full_dataset.class_names
+    val_ds.class_names = full_dataset.class_names
+    
     return train_ds, val_ds, num_classes
 
 if __name__ == '__main__':
