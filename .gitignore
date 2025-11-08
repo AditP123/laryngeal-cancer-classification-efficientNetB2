@@ -2,3 +2,6 @@ laryngeal_dataset/
 __pycache__/
 confusion_matrix.png
 pr_curves.png
+federated_weights/
+federated_confusion_matrix_final.png
+federated_pr_curves_final.png
