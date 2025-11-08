@@ -1,2 +1,4 @@
 laryngeal_dataset/
 __pycache__/
+confusion_matrix.png
+pr_curves.png
